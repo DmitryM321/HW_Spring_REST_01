@@ -1,15 +1,13 @@
-package entity;
-
-import jakarta.persistence.*;
+package skypro.entity;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "employee2")
+@Table(name = "employee3", schema = "public")
 public class Employee {
-
-
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     @Column(name = "name")
     private String name;
     @Column(name = "department")
@@ -50,5 +48,11 @@ public class Employee {
     }
 
     public Employee() {
+    }
+
+    public Employee(String name, String department, int salary) {
+        this.name = name;
+        this.department = department;
+        this.salary = salary;
     }
 }

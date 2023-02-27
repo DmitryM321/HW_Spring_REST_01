@@ -1,6 +1,4 @@
 package skypro.config;
-
-
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -24,7 +22,7 @@ public class ConfigNew {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         try {
             dataSource.setDriverClass("org.postgresql.Driver");
-            dataSource.setJdbcUrl("jdbc:postgresql://localhost/skypro");
+            dataSource.setJdbcUrl("jdbc:postgresql://localhost/Employee");
             dataSource.setUser("postgres");
             dataSource.setPassword("8363");
         } catch (PropertyVetoException e) {
@@ -36,12 +34,13 @@ public class ConfigNew {
     public LocalSessionFactoryBean getSessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(getDataSourse());
-        sessionFactory.setPackagesToScan("skypro.entity");
+        sessionFactory.setPackagesToScan("skypro.entity"); //  skypro дважды
 
         Properties properties = new Properties();
 
         properties.setProperty("dialect", "org.hibernate.dialect.PostgreSQLDialect");
         properties.setProperty("show_sql", "true");
+        properties.setProperty("hibernate.hbm2ddl.auto", "update");
 
         sessionFactory.setHibernateProperties(properties);
 

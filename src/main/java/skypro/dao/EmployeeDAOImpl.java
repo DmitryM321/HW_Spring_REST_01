@@ -1,12 +1,12 @@
-package dao;
-
-import entity.Employee;
+package skypro.dao;
+import org.springframework.stereotype.Repository;
+import skypro.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import java.util.List;
-
+@Repository
 public class EmployeeDAOImpl implements EmployeeDAO{
     private SessionFactory sessionFactory;
 
